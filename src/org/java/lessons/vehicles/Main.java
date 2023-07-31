@@ -16,56 +16,57 @@ public class Main {
         FleetManager vehicles = new FleetManager();
 
         System.out.println("*** WELCOME TO FLEET APPLICATION ***");
-        System.out.println("Choose option: 1-Enter program 2-Exit");
-        String choice = scan.nextLine();
         boolean exit = false;
+        while (!exit){
+            System.out.println("Choose option: 1-Add automobile 2-Add motorcycle 3-Find vehicle 4-View fleet 5-Exit");
+            String choice = scan.nextLine();
 
-        switch (choice){
-            case "1":
-                System.out.println("Entering program");
-                while (!exit){
-                    System.out.println("Choose option: 1-Add automobile 2-Add motorcycle 3-Find vehicle 4-Exit");
-                    String methodChoice = scan.nextLine();
-
-                    if (methodChoice.equals("1")){
-                        System.out.println("You chose add automobile.");
-                        System.out.print("Enter licence plate: ");
-                        String licencePlate = scan.nextLine();
-                        System.out.print("Enter registration year: ");
-                        int registrationYear = Integer.parseInt(scan.nextLine());
-                        Automobile automobile = new Automobile(licencePlate, registrationYear);
-                        System.out.println(automobile);
+            switch (choice) {
+                case "1" -> {
+                    System.out.println("You chose add automobile.");
+                    System.out.print("Enter licence plate: ");
+                    String licencePlate = scan.nextLine();
+                    System.out.print("Enter registration year: ");
+                    int registrationYear = Integer.parseInt(scan.nextLine());
+                    Automobile automobile = new Automobile(licencePlate, registrationYear);
+                    System.out.println(automobile);
+                    try {
                         vehicles.addVehicle(automobile);
-
-                    } else if (methodChoice.equals("2")){
-                        System.out.println("You chose add motorcycle.");
-                        System.out.print("Enter licence plate: ");
-                        String licencePlate = scan.nextLine();
-                        System.out.print("Enter registration year: ");
-                        int registrationYear = Integer.parseInt(scan.nextLine());
-                        Motorcycle motorcycle = new Motorcycle(licencePlate, registrationYear);
-                        System.out.println(motorcycle);
-                        vehicles.addVehicle(motorcycle);
-
-                    } else if (methodChoice.equals("3")){
-                        System.out.println("Enter licence plate: ");
-                        String licencePlate = scan.nextLine();
-                        vehicles.findVehicle(licencePlate);
-
-                    } else if (methodChoice.equals("4")){
-                        System.out.println("Closing program.");
-                        exit = true;
-
-                    } else {
-                        System.out.println("Invaild choice.");
+                    } catch (DuplicateLicencePlateException e) {
+                        System.out.println(e.getMessage());
                     }
-                }
-                break;
 
-            case "2":
-                System.out.println("Closing program.");
-                exit = true;
-                break;
+                }
+                case "2" -> {
+                    System.out.println("You chose add motorcycle.");
+                    System.out.print("Enter licence plate: ");
+                    String licencePlate = scan.nextLine();
+                    System.out.print("Enter registration year: ");
+                    int registrationYear = Integer.parseInt(scan.nextLine());
+                    Motorcycle motorcycle = new Motorcycle(licencePlate, registrationYear);
+                    System.out.println(motorcycle);
+                    try {
+                        vehicles.addVehicle(motorcycle);
+                    } catch (DuplicateLicencePlateException e) {
+                        System.out.println(e.getMessage());
+                    }
+
+                }
+                case "3" -> {
+                    System.out.print("Enter licence plate: ");
+                    String licencePlate = scan.nextLine();
+                    vehicles.findVehicle(licencePlate);
+
+                }
+                case "4" -> {
+                    System.out.println("View fleet: ");
+                    System.out.println(vehicles);
+                }
+                case "5" -> {
+                    System.out.println("Closing program.");
+                    exit = true;
+                }
+            }
         }
         scan.close();
     }

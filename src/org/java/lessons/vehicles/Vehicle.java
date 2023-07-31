@@ -14,14 +14,23 @@ public abstract class Vehicle {
 
 
     // FIELDS
-    String licencePlate;
-    int registrationYear;
+    protected String licencePlate;
+    protected int registrationYear;
 
 
     // CONSTRUCTORS
     public Vehicle(String licencePlate, int registrationYear) {
         this.licencePlate = licencePlate;
         this.registrationYear = registrationYear;
+    }
+
+
+    // GETTERS
+    public String getLicencePlate() {
+        return licencePlate;
+    }
+    public int getRegistrationYear() {
+        return registrationYear;
     }
 
 

@@ -15,15 +15,20 @@ public class FleetManager {
     ArrayList<Vehicle> vehicles = new ArrayList<>();
 
     // METHODS
-    public void addVehicle(Vehicle vehicle){
+    public void addVehicle(Vehicle vehicle) throws DuplicateLicencePlateException{
+        for (Vehicle v : vehicles){
+            if (v.getLicencePlate().equalsIgnoreCase(vehicle.getLicencePlate())){
+                throw new DuplicateLicencePlateException("Licence plate is already present.");
+            }
+        }
         vehicles.add(vehicle);
     }
 
     public void findVehicle(String licencePlate){
         for (Vehicle vehicle : vehicles){
-            if (licencePlate.equalsIgnoreCase(vehicle.licencePlate)){
+            if (licencePlate.equalsIgnoreCase(vehicle.getLicencePlate())){
                 System.out.println("Found: " + vehicle);
-            } else{
+            } else {
                 System.out.println("Vehicle not found.");
             }
         }
