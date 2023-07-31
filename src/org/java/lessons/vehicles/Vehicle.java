@@ -1,7 +1,7 @@
 package org.java.lessons.vehicles;
 
 /*
-Si vuole progettare un’applicazione in grado di gestire una flotta di veicoli. :macchina::moto_da_corsa:
+Si vuole progettare un’applicazione in grado di gestire una flotta di veicoli.
 Descrizione:
 Hai ricevuto l’incarico di sviluppare un’applicazione Java per la gestione di una flotta di veicoli.
 Ogni veicolo nella flotta può essere di due tipi: automobile o motocicletta.

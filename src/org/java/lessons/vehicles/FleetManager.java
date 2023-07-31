@@ -22,7 +22,9 @@ public class FleetManager {
     public void findVehicle(String licencePlate){
         for (Vehicle vehicle : vehicles){
             if (licencePlate.equalsIgnoreCase(vehicle.licencePlate)){
-                System.out.println("Found" + vehicle);
+                System.out.println("Found: " + vehicle);
+            } else{
+                System.out.println("Vehicle not found.");
             }
         }
     }
