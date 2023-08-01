@@ -37,9 +37,9 @@ public abstract class Vehicle {
     // METHODS
     @Override
     public String toString() {
-        return "Vehicle{" +
+        return "Vehicle: " +
                 "licencePlate='" + licencePlate + '\'' +
                 ", registrationYear=" + registrationYear +
-                '}';
+                ',';
     }
 }

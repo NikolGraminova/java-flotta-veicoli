@@ -14,6 +14,7 @@ public class FleetManager {
 
     ArrayList<Vehicle> vehicles = new ArrayList<>();
 
+
     // METHODS
     public void addVehicle(Vehicle vehicle) throws DuplicateLicencePlateException{
         for (Vehicle v : vehicles){
@@ -24,16 +25,28 @@ public class FleetManager {
         vehicles.add(vehicle);
     }
 
+    public void countVehicles(){
+        int automobileCount = 0;
+        int motorcycleCount = 0;
+        for (Vehicle vehicle : vehicles){
+            if (vehicle instanceof Automobile){
+                automobileCount += 1;
+            } else if (vehicle instanceof Motorcycle){
+                motorcycleCount += 1;
+            }
+        }
+        System.out.println("Automobiles in fleet: " + automobileCount);
+        System.out.println("Motorcycles in fleet: " + motorcycleCount);
+    }
+
     public void findVehicle(String licencePlate){
         for (Vehicle vehicle : vehicles){
             if (licencePlate.equalsIgnoreCase(vehicle.getLicencePlate())){
                 System.out.println("Found: " + vehicle);
-            } else {
-                System.out.println("Vehicle not found.");
             }
         }
+        System.out.println("Not found");
     }
-
 
     @Override
     public String toString() {
